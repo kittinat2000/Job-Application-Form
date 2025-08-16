@@ -2,7 +2,7 @@ CREATE TABLE employees (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nationality ENUM('Thai', 'Foreign') NOT NULL,
     branch_id INT NOT NULL,
-    action_type ENUM('ลงทะเบียน', 'เปลี่ยนนายจ้าง', 'MOU') NOT NULL,
+    action_type varchar(255) NOT NULL,
     emp_code VARCHAR(50) NOT NULL,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
