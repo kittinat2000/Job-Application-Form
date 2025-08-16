@@ -116,15 +116,17 @@ $result = $stmt_data->get_result();
               <td><?php echo htmlspecialchars($row['first_name'] . " " . $row['last_name']); ?></td>
               <td><?php echo $row['action_type']; ?></td>
               <td>
-                <a href="employee_view.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">ดู</a>
-                <form method="POST" action="function/export_pdf.php" target="_blank">
-                  <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                  <button type="submit" class="btn btn-danger btn-sm">📄 สร้างไฟล์ PDF</button>
-                </form>
-                <a href="employee_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">แก้ไข</a>
-                <a href="employee_delete.php?id=<?php echo $row['id']; ?>"
-                  onclick="return confirm('คุณแน่ใจว่าต้องการลบ?')"
-                  class="btn btn-danger btn-sm">ลบ</a>
+                <div class="d-flex gap-1 justify-content-center">
+                  <a href="employee_view.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">ดู</a>
+                  <form method="POST" action="function/export_pdf.php" target="_blank">
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                    <button type="submit" class="btn btn-danger btn-sm">📄PDF</button>
+                  </form>
+                  <a href="employee_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">แก้ไข</a>
+                  <a href="employee_delete.php?id=<?php echo $row['id']; ?>"
+                    onclick="return confirm('คุณแน่ใจว่าต้องการลบ?')"
+                    class="btn btn-danger btn-sm">ลบ</a>
+                </div>
               </td>
             </tr>
           <?php endwhile; ?>
