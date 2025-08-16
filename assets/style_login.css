@@ -1,0 +1,179 @@
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('img/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  /* สร้างพื้นหลังเบลอเฉพาะเลเยอร์ */
+  .bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    /* เอฟเฟกต์เบลอ */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* สีดำโปร่งแสงเล็กน้อย */
+    z-index: -1;
+    /* ให้พื้นหลังอยู่ด้านหลัง */
+  }
+
+  /* จัดโลโก้ให้อยู่แนวนอน */
+  .logo {
+    display: flex;
+    /* วางเรียงแนวนอน */
+    justify-content: center;
+    /* จัดกึ่งกลางแนวนอน */
+    align-items: center;
+    /* จัดกึ่งกลางแนวตั้ง */
+    gap: 12px;
+    /* เว้นระหว่างรูป */
+    flex-wrap: wrap;
+    /* ถ้าหน้าจอแคบให้ตัดบรรทัด */
+    margin: 10px 0;
+    margin-bottom: 40px;
+  }
+
+  /* สไตล์ของรูป */
+  .logo img {
+    display: block;
+    /* ตัดช่องว่าง inline */
+    width: 100px;
+    /* กำหนดความกว้างรูป */
+    height: auto;
+    /* รักษาสัดส่วน */
+    object-fit: contain;
+    /* ป้องกันยืดเบี้ยว */
+  }
+
+  .login {
+    width: 340px;
+    height: 400px;
+    background: #2c2c2c;
+    padding: 47px;
+    padding-bottom: 57px;
+    color: #fff;
+    border-radius: 17px;
+    padding-bottom: 50px;
+    font-size: 1.3em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  .login input[type="text"],
+  .login input[type="password"] {
+    opacity: 1;
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 13px 18px;
+    margin: 20px 0 0 0;
+    font-size: 0.8em;
+    border-radius: 100px;
+    background: #3c3c3c;
+    color: #fff;
+  }
+
+  .login input:focus {
+    animation: bounce 1s;
+  }
+
+  .login input[type=submit],
+  .login input[type=button],
+  .h1 {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 13px;
+    margin: 40px 0 0 0;
+    border-radius: 500px;
+    font-weight: 600;
+    animation: bounce2 1.6s;
+  }
+
+  .h1 {
+    padding: 0;
+    position: relative;
+    top: -35px;
+    display: block;
+    margin-bottom: -0px;
+    font-size: 1.3em;
+  }
+
+  .login-error {
+  color: #d64545;
+  background: #fad4d4;
+  border: 1px solid #d64545;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin: 10px 0 0;
+  font-size: 14px;
+  }
+
+  .btn {
+    background: linear-gradient(144deg, #d85167ff, #cc2b2bff 50%, #c94747ff);
+    color: #fff;
+    padding: 16px !important;
+  }
+
+  .btn:hover {
+    background: linear-gradient(144deg, #d4304bff, 20%, #e91515ff 50%, #d4304bff);
+    color: rgb(255, 255, 255);
+    padding: 16px !important;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .logo {
+    animation: bounce1 1s;
+  }
+
+  .login input[type=text] {
+    animation: bounce 1s;
+  }
+
+  .login input[type=password] {
+    animation: bounce1 1.3s;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .login {
+      width: 70%;
+      padding: 3em;
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(-250px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes bounce1 {
+    0% {
+      opacity: 0;
+    }
+
+    40% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes bounce2 {
+    0% {
+      opacity: 0;
+    }
+
+    70% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }

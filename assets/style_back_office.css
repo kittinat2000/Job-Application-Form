@@ -1,0 +1,12 @@
+body {
+    padding-bottom: 70px; /* กันปุ่มล่างบังเนื้อหา */
+    padding-top: 80px;
+      /* เว้นที่ให้ Navbar fixed-top */
+    background-color: #f8f9fa;
+}
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.2s;
+}

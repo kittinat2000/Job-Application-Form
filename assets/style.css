@@ -1,0 +1,361 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;300;400;500;700&display=swap');
+
+
+body { 
+  font-family: 'Prompt', sans-serif;
+  margin: 0px; 
+  background-color: #c5c5c5;
+}
+
+
+.container {
+  width: 90%;                /* กว้าง 80% ของหน้าจอ */
+  max-width: 800px;          /* จำกัดความกว้างสูงสุด */
+  margin: 0 auto;            /* จัดให้อยู่ตรงกลางแนวนอน */
+  padding: 10px;             /* ระยะห่างภายใน */
+  box-sizing: border-box;    /* กัน padding กวน width */
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 90%;              /* บนหน้าจอเล็ก (มือถือ) ให้กว้างขึ้นเล็กน้อย */
+    padding: 10px;           /* ลด padding */
+  }
+}
+
+.head {
+  text-align: center;          /* จัดกึ่งกลางข้อความ */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);  /* เงาแบบนุ่ม ๆ */
+  margin-top: 20px;            /* เว้นระยะด้านบน (ปรับได้ตามชอบ) */
+  font-size: 2.5rem;           /* ขนาดฟอนต์ใหญ่พอสมควร */
+  color: #222;                 /* สีข้อความ */
+}
+
+.header {
+  color: #000;
+  text-transform: uppercase;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background: #ebeaea;
+  box-shadow: 16px 16px 32px #a3a3a3,
+        -16px -16px 32px #a3a3a3;
+  border-radius: 8px;
+}
+
+.inputBox {
+  position: relative;
+  width: 600px;
+  margin-bottom: 25px;
+}
+
+.inputBox input,.inputBox textarea {
+  width: 100%;
+  height: 20px;
+  padding: 15px;
+  outline: none;
+  border: none;
+  color: #000;
+  font-size: 20px;
+  background: transparent;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+  resize: none; /* ป้องกันการย่อ/ขยาย textarea ถ้าไม่ต้องการ */
+  overflow: hidden;
+}
+
+.inputBox span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-65px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 20px;
+  color: #000;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+
+.inputBox input:not(:placeholder-shown) + span,
+.inputBox textarea:not(:placeholder-shown) + span,
+.inputBox input:focus + span,
+.inputBox textarea:focus + span {
+  transform: translateX(1px) translateY(-80px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #000;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+  border-radius: 8px;
+}
+
+.inputBox input:not(:placeholder-shown),
+.inputBox textarea:not(:placeholder-shown),
+.inputBox input:focus,
+.inputBox textarea:focus {
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+.enter {
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+  margin-bottom: 20px;
+}
+
+.enter:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+
+.inputBox label {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.inputBox select {
+  display: inline-block;
+  width: auto; /* หรือระบุเป็น 120px, 150px ตามต้องการ */
+  min-width: 120px;
+  padding: 8px 12px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+  transition: border 0.3s;
+}
+
+.inputBox select:focus {
+  border-color: #333;
+}
+
+@media (max-width: 650px) {
+  .inputBox {
+    width: 100%;
+  }
+
+  .inputBox label,
+  .inputBox select {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .inputBox select {
+    margin-right: 0;
+  }
+}
+
+input[type="file"] {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  margin-top: 10px;
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+/* From Uiverse.io by SelfMadeSystem */ 
+.button {
+  position: relative;
+  width: 10rem;
+  height: 3rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.button svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.border {
+  width: 100%;
+  height: 100%;
+  stroke: black;
+  stroke-width: 2px;
+  fill: #0000;
+  rx: 1em;
+  ry: 1em;
+  stroke-dasharray: 25;
+  transition: fill 0.25s;
+  animation: 4s linear infinite stroke-animation;
+}
+
+.button:hover .border {
+  fill: #0001;
+}
+
+.button:focus .border {
+  transition: fill 0.25s 7.75s;
+  fill: #0000;
+}
+
+@keyframes stroke-animation {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.file-upload-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.file-upload-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  /* เพิ่มคุณสมบัติเพื่อให้มันแสดงเต็มพื้นที่ */
+  width: 100%;
+  box-sizing: border-box; /* ทำให้ padding และ border ไม่เพิ่มขนาดของกล่อง */
+}
+
+.upload-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap; /* ป้องกันไม่ให้ปุ่มขึ้นบรรทัดใหม่ */
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+.file-name {
+  flex-grow: 1;
+  margin-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #555;
+  /* ทำให้ส่วนนี้ยืดหยุ่นได้เต็มที่ */
+  min-width: 0;
+}
+
+.file-actions {
+  display: flex;
+  gap: 5px;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.file-actions button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.file-actions button:hover {
+  color: #0056b3;
+}
+
+.remove-button {
+  color: #dc3545 !important;
+}
+
+.remove-button:hover {
+  color: #a71d2a !important;
+}
+
+/* Modal (popup) */
+.modal {
+  display: none; /* ซ่อน Modal ไว้ในตอนแรก */
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: 15% auto; /* จัดให้อยู่ตรงกลางหน้าจอ */
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+#preview-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
