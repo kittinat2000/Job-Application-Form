@@ -49,9 +49,3 @@ CREATE TABLE branches (
     branch_name VARCHAR(255) NOT NULL UNIQUE,
     phonenumber VARCHAR(25) NOT NULL,
 );
-
--- เพิ่มข้อมูลสาขาตัวอย่าง
-INSERT INTO branches (branch_name) VALUES
-('สาขาที่ 1 - อ่อนนุช','089999999'),
-('สาขาที่ 2 - บางนา','089999998'),
-('สาขาที่ 3 - สาธุ','089999997');

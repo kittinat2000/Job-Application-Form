@@ -11,13 +11,13 @@
       </button>
 
       <!-- เมนูหลัก -->
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
 
           <li class="nav-item">
             <a class="nav-link" href="log.php">Log</a>
           </li>
-        </ul>
+        </ul> -->
 
         <!-- ปุ่มด้านขวา -->
         <ul class="navbar-nav ms-auto">
