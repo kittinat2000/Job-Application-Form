@@ -38,17 +38,20 @@ CREATE TABLE users (
 );
 
 -- เพิ่มผู้ใช้เริ่มต้น
-INSERT INTO users (username, password, role) VALUES
-('admin', '$2y$10$wBQ/jnRYPvHz.cUJeaB4AOjOrPpNMLosj6uhKhj9WjA/0vxR3Zf3S', 'admin'), -- รหัส: admin
-('user', '$2y$10$fxVx21vXmy2fWe35haGRe.wlQTHHOgSdw8EoH.JR6JAH/20PCCqMy', 'user');   -- รหัส: user
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
+(2, 'admin', '$2y$10$s9DMj7z1pqwA2Tzfk9ILB.fOpCrULdAFLRqfo2CbWgIiOJCNRBhYC', 'admin', '2025-08-14 16:54:06'),
+(3, 'user', '$2y$10$fxVx21vXmy2fWe35haGRe.wlQTHHOgSdw8EoH.JR6JAH/20PCCqMy', 'user', '2025-08-14 16:54:06');
 
 CREATE TABLE branches (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    branch_name VARCHAR(255) NOT NULL UNIQUE
+    branch_type ENUM('Suki','BBQ') NOT NULL  -- ตัวเลือกเฉพาะ 2 แบบ
+    branch_order INT NOT NULL,  -- ลำดับที่คุณกำหนดเอง
+    branch_name VARCHAR(255) NOT NULL UNIQUE,
+    phonenumber VARCHAR(25) NOT NULL,
 );
 
 -- เพิ่มข้อมูลสาขาตัวอย่าง
 INSERT INTO branches (branch_name) VALUES
-('สาขาที่ 1 - อ่อนนุช'),
-('สาขาที่ 2 - บางนา'),
-('สาขาที่ 3 - สาธุ');
+('สาขาที่ 1 - อ่อนนุช','089999999'),
+('สาขาที่ 2 - บางนา','089999998'),
+('สาขาที่ 3 - สาธุ','089999997');

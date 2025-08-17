@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="utf-8">
   <title>Login</title>
+  <link rel="stylesheet" href="assets/style_back_office.css">
 </head>
 
 <body>
@@ -57,6 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       });
     </script>
   <?php endif; ?>
+
+  <?php include "loading.php"; ?>
 </body>
 
 </html>
