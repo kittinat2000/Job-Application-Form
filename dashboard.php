@@ -62,11 +62,14 @@ $total_records = $total_row['total'];
 $total_pages = ceil($total_records / $limit);
 
 // --- ดึงข้อมูลตาม filter + limit ---
-$sql_data = "SELECT * FROM employees";
+// --- ดึงข้อมูลตาม filter + limit ---
+$sql_data = "SELECT e.*, b.branch_name, b.branch_type, b.branch_order
+             FROM employees e 
+             LEFT JOIN branches b ON e.branch_id = b.id";
 if (!empty($where)) {
   $sql_data .= " WHERE " . implode(" AND ", $where);
 }
-$sql_data .= " ORDER BY id DESC LIMIT ? OFFSET ?";
+$sql_data .= " ORDER BY e.id DESC LIMIT ? OFFSET ?";
 
 $stmt_data = $conn->prepare($sql_data);
 
@@ -98,23 +101,23 @@ $result = $stmt_data->get_result();
     <h4 class="mb-3">รายการพนักงาน</h4>
     <?php include "filter.php"; ?>
     <div class="table-responsive">
-      <table class="table table-bordered table-hover align-middle text-center">
+      <table class="table table-bordered table-hover align-middle text-start">
         <thead class="table-primary">
           <tr>
             <th>สาขา</th>
             <th>รหัส</th>
             <th>ชื่อ-นามสกุล</th>
-            <th>ประเภท</th>
-            <th>จัดการ</th>
+            <th class="text-center">ประเภท</th>
+            <th class="text-center">จัดการ</th>
           </tr>
         </thead>
         <tbody>
           <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
-              <td><?php echo $row['branch_id']; ?></td>
+              <td>สาขาที่ <?php echo htmlspecialchars($row['branch_order']); ?> <?php echo htmlspecialchars($row['branch_type']); ?> - <?php echo htmlspecialchars($row['branch_name']); ?></td>
               <td><?php echo htmlspecialchars($row['emp_code']); ?></td>
               <td><?php echo htmlspecialchars($row['first_name'] . " " . $row['last_name']); ?></td>
-              <td><?php echo $row['action_type']; ?></td>
+              <td class="text-center"><?php echo $row['action_type']; ?></td>
               <td>
                 <div class="d-flex gap-1 justify-content-center">
                   <a href="employee_view.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">ดู</a>
