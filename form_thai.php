@@ -4,7 +4,7 @@ require "config.php";
 $nationality = $_GET['nationality'];
 
 // ดึงข้อมูลสาขา
-$sql = "SELECT id, branch_name FROM branches ORDER BY branch_name ASC";
+$sql = "SELECT * FROM branches ORDER BY branch_order ASC";
 $result = $conn->query($sql);
 
 $conn->close();
@@ -16,6 +16,7 @@ $conn->close();
   <meta charset="UTF-8">
   <title>ฟอร์มเก็บประวัติพนักงาน (สัญชาติไทย)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style_back_office.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -43,7 +44,7 @@ $conn->close();
               <?php
               if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                  echo "<option value='" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["branch_name"]) . "</option>";
+                  echo "<option value='" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["branch_type"]) ." สาขาที่ ". htmlspecialchars($row["branch_order"]) ." ". htmlspecialchars($row["branch_name"]) . "</option>";
                 }
               }
               ?>
@@ -111,6 +112,8 @@ $conn->close();
       </div>
     </div>
   </div>
+
+  <?php include "loading.php";  ?>
 
 </body>
 

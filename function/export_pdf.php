@@ -11,7 +11,7 @@ $id = intval($_POST['id']);
 $id = intval($_POST['id']);
 
 // ดึงข้อมูลพนักงาน
-$sql = "SELECT e.*, b.branch_name 
+$sql = "SELECT e.*, b.*
         FROM employees e
         LEFT JOIN branches b ON e.branch_id = b.id
         WHERE e.id = ?";
@@ -52,7 +52,7 @@ $pdf->Ln(5);
 // ✅ ข้อมูลพื้นฐาน (จัดตรงกลาง)
 $pdf->SetFont('THSarabunNew','',16);
 $pdf->Cell(0,10,iconv('UTF-8','cp874','ประเภทการทำรายการ : '.$row['action_type']),0,1,'C');
-$pdf->Cell(0,10,iconv('UTF-8','cp874',$row['branch_name'].' | รหัสพนักงาน : '.$row['emp_code']),0,1,'C');
+$pdf->Cell(0,10,iconv('UTF-8','cp874',$row['branch_type']." สาขาที่ ". $row['branch_order'] ." ".$row['branch_name'].' | รหัสพนักงาน : '.$row['emp_code']),0,1,'C');
 $pdf->Cell(0,10,iconv('UTF-8','cp874','ชื่อ-นามสกุล : '.$row['first_name']." ".$row['last_name']),0,1,'C');
 
 

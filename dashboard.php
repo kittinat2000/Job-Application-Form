@@ -138,9 +138,9 @@ $result = $stmt_data->get_result();
     </div>
     <!-- แสดงตัวแบ่งหน้า -->
     <?php include "pagination.php"; ?>
-    <!-- หน้าโหลดระหว่างรอกรอกข้อมูล -->
-    <?php include "loading.php"; ?>
   </div>
+  <!-- หน้าโหลดระหว่างรอกรอกข้อมูล -->
+  <?php include "loading.php"; ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
