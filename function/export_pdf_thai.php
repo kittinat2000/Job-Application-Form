@@ -8,8 +8,6 @@ if (!isset($_POST['id'])) {
 
 $id = intval($_POST['id']);
 
-$id = intval($_POST['id']);
-
 // ดึงข้อมูลพนักงาน
 $sql = "SELECT e.*, b.*
         FROM employees e
@@ -51,7 +49,7 @@ $pdf->Ln(5);
 
 // ✅ ข้อมูลพื้นฐาน (จัดตรงกลาง)
 $pdf->SetFont('THSarabunNew','',16);
-$pdf->Cell(0,10,iconv('UTF-8','cp874','ประเภทการทำรายการ : '.$row['action_type']),0,1,'C');
+$pdf->Cell(0,10,iconv('UTF-8','cp874','ตำแหน่ง : '.$row['action_type']),0,1,'C');
 $pdf->Cell(0,10,iconv('UTF-8','cp874',$row['branch_type']." สาขาที่ ". $row['branch_order'] ." ".$row['branch_name'].' | รหัสพนักงาน : '.$row['emp_code']),0,1,'C');
 $pdf->Cell(0,10,iconv('UTF-8','cp874','ชื่อ-นามสกุล : '.$row['first_name']." ".$row['last_name']),0,1,'C');
 
@@ -121,34 +119,19 @@ function addImageInline($pdf, $title, $filePath) {
 
 // ✅ เรียกฟังก์ชันทีละไฟล์
 if (!empty($row['photo_path'])) {
-    addImageInline($pdf, 'รูปถ่าย', "../uploads/".$row['photo_path']);
+    addImageInline($pdf, 'ใบสมัคร', "../uploads/".$row['photo_path']);
 }
 if (!empty($row['work_permit_path'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['work_permit_path']);
+    addImagePage($pdf, 'สำเนาบัตร ปชช.', "../uploads/".$row['work_permit_path']);
 }
 if (!empty($row['passport_path'])) {
-    addImagePage($pdf, 'หน้าพาสปอร์ต', "../uploads/".$row['passport_path']);
+    addImagePage($pdf, 'สำเนาทะเบียนบ้าน', "../uploads/".$row['passport_path']);
 }
 if (!empty($row['receipt_path'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['receipt_path']);
+    addImagePage($pdf, 'สำเนาการศึกษา', "../uploads/".$row['receipt_path']);
 }
 if (!empty($row['wp_book_path'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['wp_book_path']);
-}
-if (!empty($row['work_accept_path'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['work_accept_path']);
-}
-if (!empty($row['notice_file_path55'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['notice_file_path55']);
-}
-if (!empty($row['notice_file_path52'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['notice_file_path52']);
-}
-if (!empty($row['pink_card_front_path'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['pink_card_front_path']);
-}
-if (!empty($row['pink_card_back_path'])) {
-    addImagePage($pdf, 'ใบอนุญาตทำงาน', "../uploads/".$row['pink_card_back_path']);
+    addImagePage($pdf, 'Book Bank', "../uploads/".$row['wp_book_path']);
 }
 
 $pdf->Output('I', 'employee_'.$row['id'].'.pdf');

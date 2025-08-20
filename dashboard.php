@@ -114,17 +114,33 @@ $result = $stmt_data->get_result();
         <tbody>
           <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
-              <td>สาขาที่ <?php echo htmlspecialchars($row['branch_order']); ?> <?php echo htmlspecialchars($row['branch_type']); ?> - <?php echo htmlspecialchars($row['branch_name']); ?></td>
+              <td>
+                สาขาที่ <?php echo htmlspecialchars($row['branch_order']); ?>
+                <?php echo htmlspecialchars($row['branch_type']); ?> -
+                <?php echo htmlspecialchars($row['branch_name']); ?>
+              </td>
               <td><?php echo htmlspecialchars($row['emp_code']); ?></td>
               <td><?php echo htmlspecialchars($row['first_name'] . " " . $row['last_name']); ?></td>
-              <td class="text-center"><?php echo $row['action_type']; ?></td>
+              <td class="text-center"><?php echo htmlspecialchars($row['action_type']); ?></td>
               <td>
                 <div class="d-flex gap-1 justify-content-center">
                   <a href="employee_view.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">ดู</a>
-                  <form method="POST" action="function/export_pdf.php" target="_blank">
-                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                    <button type="submit" class="btn btn-danger btn-sm">📄PDF</button>
-                  </form>
+                  <?php if (
+                    $row['action_type'] == "MOU"
+                    || $row['action_type'] == "เปลี่ยนนายจ้าง"
+                    || $row['action_type'] == ""
+                  ): ?>
+                    <form method="POST" action="function/export_pdf_foreign.php" target="_blank">
+                      <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                      <button type="submit" class="btn btn-danger btn-sm">📄PDF-f</button>
+                    </form>
+                  <?php else: ?>
+                    <form method="POST" action="function/export_pdf_thai.php" target="_blank">
+                      <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                      <button type="submit" class="btn btn-danger btn-sm">📄PDF</button>
+                    </form>
+                  <?php endif; ?>
+
                   <a href="employee_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">แก้ไข</a>
                   <a href="employee_delete.php?id=<?php echo $row['id']; ?>"
                     onclick="return confirm('คุณแน่ใจว่าต้องการลบ?')"

@@ -5,7 +5,7 @@ require "config.php";
 $id = intval($_GET['id']);
 
 // ดึงข้อมูลเก่า
-$sql_branch = "SELECT id, branch_name FROM branches ORDER BY branch_name ASC";
+$sql_branch = "SELECT * FROM branches ORDER BY branch_name ASC";
 $sql_emp = "SELECT * FROM employees WHERE id=?";
 $stmt = $conn->prepare($sql_emp);
 $stmt->bind_param("i", $id);
@@ -44,12 +44,12 @@ if (!$emp) {
           <?php
           // แสดง option ของสาขาปัจจุบันของพนักงานก่อน
           if ($emp['branch_id']) {
-            $stmtCurrent = $conn->prepare("SELECT branch_name FROM branches WHERE id=?");
+            $stmtCurrent = $conn->prepare("SELECT * FROM branches WHERE id=?");
             $stmtCurrent->bind_param("i", $emp['branch_id']);
             $stmtCurrent->execute();
             $resCurrent = $stmtCurrent->get_result();
             $currentBranch = $resCurrent->fetch_assoc();
-            echo "<option value='" . $emp['branch_id'] . "' selected>" . htmlspecialchars($currentBranch['branch_name']) . "</option>";
+            echo "<option value='" . $emp['branch_id'] . "' selected>" .htmlspecialchars($currentBranch['branch_type'])." สาขาที่ ".htmlspecialchars($currentBranch['branch_order'])." ". htmlspecialchars($currentBranch['branch_name']) . "</option>";
           } else {
             echo "<option value='' selected>-- เลือกสาขา --</option>";
           }
@@ -59,7 +59,7 @@ if (!$emp) {
             while ($row = $query_branch->fetch_assoc()) {
               // ข้ามสาขาปัจจุบัน
               if ($row['id'] == $emp['branch_id']) continue;
-              echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['branch_name']) . "</option>";
+              echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['branch_type']) . " สาขาที่ " . htmlspecialchars($row['branch_order']) ." ". htmlspecialchars($row['branch_name']) . "</option>";
             }
           }
           ?>

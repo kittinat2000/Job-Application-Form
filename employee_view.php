@@ -4,7 +4,10 @@ require "function/check_user.php";
 require "config.php";
 
 $id = intval($_GET['id']);
-$stmt = $conn->prepare("SELECT * FROM employees WHERE id=?");
+$stmt = $conn->prepare("    SELECT e.*, b.* 
+                            FROM employees e
+                            LEFT JOIN branches b ON e.branch_id = b.id
+                            WHERE e.id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -33,6 +36,10 @@ if (!$emp) {
     <h4>รายละเอียดพนักงาน</h4>
     <!-- ตารางรายละเอียด -->
     <table class="table table-bordered">
+      <tr>
+        <th>สถานที่</th>
+        <td><?= $emp['branch_type'] ?> สาขาที่ <?= $emp['branch_order'] ?> <?= $emp['branch_name'] ?></td>
+      </tr>
       <tr>
         <th>รหัสพนักงาน</th>
         <td><?= $emp['emp_code'] ?></td>
